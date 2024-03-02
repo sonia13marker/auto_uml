@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 import Contract from '../components/Contract';
+import ManagerApplication from '../components/ManagerApplication';
 
 export default function PersonalAccountPage() {
     const role = 2;
@@ -11,7 +12,7 @@ export default function PersonalAccountPage() {
     },
   {
     id:2,
-    isApplicationConfirm: false,
+    isApplicationConfirm: true,
   },
 {
   id: 3,
@@ -85,7 +86,7 @@ export default function PersonalAccountPage() {
       </div>
       </div>
       {
-        role === 1 ? <UserPersonalAcc product={product} manager={manager} user={user}/> : (role === 2 ? <ManagerPersonalAcc application_count={application_count}/> : <SellerPesonalAcc />)
+        role === 1 ? <UserPersonalAcc product={product} manager={manager} user={user}/> : (role === 2 ? <ManagerPersonalAcc application_count={application_count} product={product} user={user}/> : <SellerPesonalAcc />)
       }
         </div>
     )
@@ -94,7 +95,7 @@ export default function PersonalAccountPage() {
 const UserPersonalAcc = ({product, manager, user}) => {
     const application_id = 1;
     const isApplicationConfirm = true;
-    const isContractPayment = false;
+    const isContractPayment = true;
     const [open,setOpen] = useState(false);
     const openContract = () => {
         setOpen(!open);
@@ -105,11 +106,11 @@ const UserPersonalAcc = ({product, manager, user}) => {
         <dl className="divide-y divide-gray-100">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Имя</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot</dd>
+            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Иван</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Фамилия</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Foster</dd>
+            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Иванов</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Роль</dt>
@@ -177,7 +178,7 @@ const UserPersonalAcc = ({product, manager, user}) => {
                         <p 
                         className='font-medium text-green-500' 
                         >
-                        "Oплачено"
+                        Oплачено
                         </p>
                     </div>
                     
@@ -198,8 +199,14 @@ const UserPersonalAcc = ({product, manager, user}) => {
     )
 }
 
-const ManagerPersonalAcc = ({application_count}) => {
-    return (
+const ManagerPersonalAcc = ({application_count, product, user}) => {
+
+  const [open,setOpen] = useState(false);
+    const openManagerApplication = () => {
+        setOpen(!open);
+    }
+    return (<>
+    
       <div className="mt-6 border-t border-gray-100 lg:px-8">
         <dl className="divide-y divide-gray-100">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -244,14 +251,15 @@ const ManagerPersonalAcc = ({application_count}) => {
                   </div>
 
                   <div className="ml-4 flex-shrink-0">
-                  <p 
-                      className={classNames('font-medium', {
-                'text-green-500': application.isApplicationConfirm,
-                'text-red-500': !application.isApplicationConfirm,
-                })} 
+                    {
+                      application.isApplicationConfirm ? <p className="font-medium text-green-500">
+                        Подтверждена
+                      </p> : <p className='font-medium text-red-500 cursor-pointer' 
+                      onClick={openManagerApplication}
                       >
-                        {application.isApplicationConfirm ? "Подтверждена" : "Не подтверждена"}
+                      Не подтверждена
                       </p>
+                    }
                     </div>
         </li> 
         )
@@ -265,6 +273,8 @@ const ManagerPersonalAcc = ({application_count}) => {
           </div>
         </dl>
       </div>
+      <ManagerApplication product={product} user={user} open={open} setOpen={setOpen}/>
+      </>
     )
 }
 
@@ -274,11 +284,11 @@ const SellerPesonalAcc = () => {
         <dl className="divide-y divide-gray-100">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Имя</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot</dd>
+            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Крутой</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Фамилия</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Foster</dd>
+            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Продавец</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Роль</dt>
@@ -294,11 +304,11 @@ const SellerPesonalAcc = () => {
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Количество проданных авто</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"></dd>
+            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">10</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Количество оставшихся авто</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"></dd>
+            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">15</dd>
           </div>
         </dl>
       </div>

@@ -6,8 +6,7 @@ export default function CardList () {
         {
           id: 1,
           name: 'Mazda 3',
-        //   href: '#',
-          imageSrc: 'https://pokatim.ru/uploads/posts/2020-07/1595083762_anh-thuc-te-kia-optima-the-he-moi-vua-ra-mat-27-_6966.jpg',
+          imageSrc: 'https://avatars.mds.yandex.net/get-autoru-vos/2078455/7ca8c3236195839768059c21bf98e9df/1200x900',
           imageAlt: "cool car",
           price: '3 500 400',
           color: 'черный',
@@ -16,28 +15,70 @@ export default function CardList () {
           liters_count: '1.6'
         },
         {
+          id: 7,
+          name: 'Porsche 911',
+          imageSrc: 'https://avatars.mds.yandex.net/get-autoru-vos/2153937/e09f3957a8ad7a75c8f6026f14e99352/1200x900',
+          imageAlt: "cool car",
+          price: '12 550 899',
+          color: 'желтый',
+          drive: 'передний',
+          fuel: 'diesel',
+          liters_count: '2'
+        },
+        {
             id: 2,
             name: 'Kia K5',
-            // href: '#',
-            imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+            imageSrc: 'https://pokatim.ru/uploads/posts/2020-07/1595083762_anh-thuc-te-kia-optima-the-he-moi-vua-ra-mat-27-_6966.jpg',
             imageAlt: "cool car",
-            price: '1 250 799',
+            price: '4 250 799',
             color: 'белый',
             drive: 'передний',
-            fuel: 'diesel',
+            fuel: 'бензин',
             liters_count: '1.6'
           },
           {
             id: 3,
             name: 'Nissan Qashqai',
-            // href: '#',
-            imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+            imageSrc: 'https://avatars.mds.yandex.net/get-autoru-vos/2173513/90ef946600554f354efb2b0150850dd3/1200x900',
             imageAlt: "cool car",
-            price: '11 450 999',
+            price: '2 350 799',
             color: 'красный',
+            drive: 'передний',
+            fuel: 'бензин',
+            liters_count: '2'
+          },
+          {
+            id: 4,
+            name: 'Toyota Camry',
+            imageSrc: 'https://avtovesti.com/wp-content/uploads/2022/09/WK7A0036.jpg',
+            imageAlt: "cool car",
+            price: '5 250 999',
+            color: 'черный',
             drive: 'передний',
             fuel: 'diesel',
             liters_count: '1.6'
+          },
+          {
+            id: 5,
+            name: 'Volkswagen Polo',
+            imageSrc: 'https://avatars.mds.yandex.net/get-autoru-vos/1650647/ddfe5e9c13eafe50fefdcf115bb41b87/1200x900',
+            imageAlt: "cool car",
+            price: '2 100 999',
+            color: 'красный',
+            drive: 'передний',
+            fuel: 'бензин',
+            liters_count: '2.5'
+          },
+          {
+            id: 6,
+            name: 'Kia Stinger',
+            imageSrc: 'https://cdn.carbuzz.com/gallery-images/1600/438000/800/438863.jpg',
+            imageAlt: "cool car",
+            price: '11 450 999',
+            color: 'желтый',
+            drive: 'передний',
+            fuel: 'diesel',
+            liters_count: '2'
           },
       ]
 

@@ -1,7 +1,7 @@
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-export default function Contract({product, manager, user, open, setOpen}) {
+export default function ManagerApplication({product, user, open, setOpen}) {
     const cancelButtonRef = useRef(null);
 
     return (
@@ -42,13 +42,13 @@ export default function Contract({product, manager, user, open, setOpen}) {
                       as="h3"
                       className="text-base font-semibold leading-6 text-gray-900 text-center"
                     >
-                      Договор об оплате
+                      Утвердить заявку
                     </Dialog.Title>
                   </div>
                 </div>
                 {/* внутреннее содержимое - форма */}
                 <form
-                  className="space-y-6 px-4 pb-4 pt-5 sm:p-6 sm:pb-4"
+                  className="space-y-4 px-4 pb-4 pt-5 sm:p-6 sm:pb-4"
                   action="#"
                   method="POST"
                 >
@@ -130,10 +130,11 @@ export default function Contract({product, manager, user, open, setOpen}) {
 
                   <div className="flex flex-row gap-1">
                     <h3 className="text-m font-medium text-gray-900">
-                        Вас обслуживал менеджер: 
+                        Статус заявки: 
                     </h3>
                     <p className="text-m text-gray-700">
-                        Алексей{manager.name} Алексеев{manager.second_name}
+                        {/* {product.} */}
+                        Не подтверждена
                     </p>
                   </div>
                 </form>
@@ -141,10 +142,10 @@ export default function Contract({product, manager, user, open, setOpen}) {
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
+                    className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto"
                     onClick={() => setOpen(false)}
                   >
-                    Оплатить
+                    Подтвердить
                   </button>
                   <button
                     type="button"
@@ -152,7 +153,7 @@ export default function Contract({product, manager, user, open, setOpen}) {
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                   >
-                    Отмена
+                    Отклонить
                   </button>
                 </div>
               </Dialog.Panel>
@@ -162,4 +163,5 @@ export default function Contract({product, manager, user, open, setOpen}) {
       </Dialog>
     </Transition.Root>
     )
+
 }
