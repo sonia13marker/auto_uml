@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
+import MainPage from './pages/MainPage';
+import PersonalAccountPage from './pages/PersonalAccountPage';
+import LoginPage from './pages/LoginPage';
+import SingupPage from './pages/SingupPage';
+import Header from './components/Header';
 
 function App() {
+  function PrivateOutlet() {
+    return <Header><Outlet /></Header>;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<PrivateOutlet />}>
+            <Route index element={<MainPage />} />
+            <Route path='account' element={<PersonalAccountPage />} />
+          </Route>
+            <Route path='/login' element={<LoginPage></LoginPage>}></Route>
+            <Route path='/singup' element={<SingupPage></SingupPage>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
